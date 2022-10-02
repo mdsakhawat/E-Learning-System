@@ -1,0 +1,60 @@
+
+<script>
+  function sendHeaderCategoryDeleteRequest(Id) {
+    
+    $.ajax({
+      url: `/admin/headercategory/`+Id,
+        type: "DELETE",
+        data: JSON.stringify(
+          {
+            Id: Id,
+          }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        complete: function (xmlHttp) {
+          
+          // xmlHttp is a XMLHttpRquest object
+          if (xmlHttp.status != 404) {
+            //alert("A category has been deleted ");
+            window.location.href = "/admin/headercategory/all";
+          } else {
+            alert("Some thing went wrong");
+            window.location.href = "/admin/headercategory/all";
+          }
+        }
+      });
+
+  }
+</script>
+   <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="text-center align-items-center  justify-content-between mb-3 ">
+                        <h4 >Header Category</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-hover mb-0">
+                            <thead>
+                                <tr >
+                                   
+                                    <th scope="col">Header Category Name</th>
+                                      <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {{#each listOfCategories}}
+                                <tr class="text-white">
+                                    <td>{{this.HeaderNameCategory}}</td>
+
+                                    <td><a type="button" href="/admin/headercategory/edit/{{./this.Id}}"   class="btn btn-sm btn-success">Edit</a></td>
+
+                                    <td><button type="button" onclick="confirm('Are you sure you want to delete this item?')&&sendHeaderCategoryDeleteRequest({{./this.Id}})" class="btn btn-sm btn-primary">Delete</button></td>
+                                </tr>   
+                                  {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>

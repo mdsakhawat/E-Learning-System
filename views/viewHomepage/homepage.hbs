@@ -1,0 +1,735 @@
+ {{#section 'css'}}
+<link rel="stylesheet" href="/public/stylesheets/bootstrap.min.css">
+<link rel="stylesheet" href="/public/stylesheets/home.css">
+<link rel="stylesheet" href="/public/stylesheets/jsRapStar.css" />
+{{/section}}
+{{#section 'js'}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/public/javascript/jsRapStar.js"></script>
+<script>$('.ratingStar').jsRapStar({ enabled: false, colorFront: "yellow" });</script>
+{{/section}}
+
+
+ 
+ <!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="assets/images/pexels-tima-miroshnichenko-6550419.mp4" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="caption">             
+              <h2>Welcome to E-Learning</h2>
+              <p>Learn without limits.Transform your life through education.Learners around the world are launching new careers, advancing in their fields, and enriching their lives with more than 100 courses.</p>
+              <div class="main-button-red">
+                  <div ><a href="/account/register">Join Now!</a></div>
+              </div>
+          </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+  <section class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-service-item owl-carousel" >
+          
+          {{#each listOfHighlightCourses}}
+            <div class="item">
+                <a href="/course/detail/{{this.IdCourse}}">
+              <div class="icon">
+                <img src="assets/images/service-icon-01.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>{{this.nameCourse}}</h4>
+                <h7>{{{this.title}}}</h7>
+              </div>
+              </a>
+              
+            </div>
+               {{/each}}         
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="apply-now" id="apply">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="item bg-dark">
+                <h3>APPLY FOR Teaching</h3>
+                <p>You are allowed to use E-Learning syatem as an Instructor, if you are interested.</p>
+                <div class="main-button-red">
+                  <div><a href="/account/register">Join Us Now!</a></div>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="item bg-dark">
+                <h3>APPLY FOR Learning</h3>
+                <p>You are also allowed to use E-Learning syatem as a Student, if you are interested.</p>
+                <div class="main-button-yellow">
+                  <div><a href="/account/register">Join Us Now!</a></div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="accordions is-first-expanded">
+            <article class="accordion">
+                <div class="accordion-head">
+                    <span>About E-Learning System</span>
+                    <span class="icon">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </span>
+                </div>
+                <div class="accordion-body">
+                    <div class="content">
+                        <p>E-Learning system is the platform to learn virtually.You can enroll as an instructor or a student. Expert instructors are responsible to take every course. Students can take more course to increase theire knowledge to progress their carier.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="accordion">
+                <div class="accordion-head">
+                    <span>Enroll as an Instructor</span>
+                    <span class="icon">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </span>
+                </div>
+                <div class="accordion-body">
+                    <div class="content">
+                        <p>To enroll as an instructor , you should be registered in our E-Learing system.
+                          Then you can create ourses and upload content based on the course. You should responsible to your course. If the rating of your course is not so good, you will be restricted.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="accordion">
+                <div class="accordion-head">
+                    <span>Enroll as a Student</span>
+                    <span class="icon">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </span>
+                </div>
+                <div class="accordion-body">
+                    <div class="content">
+                        <p>To enroll as a student, you should be registered in our system.
+                          The course content will be provied and you can learn easily. The content may be video or pdf file or jpg file.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="accordion last-accordion">
+                <div class="accordion-head">
+                    <span>Restriction</span>
+                    <span class="icon">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </span>
+                </div>
+                <div class="accordion-body">
+                    <div class="content">
+                        <p>Admin can restrict your account any time if your activity will not support our community.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="our-courses" id="courses">
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>Latest Courses</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="owl-courses-item owl-carousel">
+
+              {{#each latestPage1}}
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+             {{/each}}
+        
+         
+              {{#each latestPage2}}
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+             {{/each}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>Most viewed</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="owl-courses-item owl-carousel">
+
+              {{#each mostViewedPage1}}
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+             {{/each}}
+        
+         
+             {{#each mostViewedPage2}}
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+             {{/each}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>POPULAR COURSES</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="owl-courses-item owl-carousel">
+
+            {{#each mostRegisteredPage1}}   
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+             {{/each}}
+        
+         
+              {{#each mostRegisteredPage2}}
+            <div class="item">
+              <img src="/public/images/course/{{this.IdCourse}}/thumb.jpg" alt="">
+              <div class="down-content">
+                <div class="sub-down">
+                    <h4>{{this.nameCourse}}</h4>
+                </div>
+               
+                <div class="info">
+                  <div class="sub-info">
+                       <div class="row">
+                    <div class="col-9">
+                          
+                      <ul>
+                         
+                        <li><i class="fa fa-star"></i></li>
+                         <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                           <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                             <li>({{this.avgRate}})</li>
+                            
+                                   
+                      </ul>
+                    
+                      
+
+                    </div>
+                    <div class="col-3"> 
+                                             
+                       <span><strike>${{this.Price}}</strike></span>
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-9">
+                      <ul>
+                    
+                        <li><a href="/course/detail/{{this.IdCourse}}" class="btn btn-denger">View
+                        course</a></li>
+                      </ul>
+
+                    </div>
+                    <div class="col-3">                           
+                       <span>${{this.SaleCost}}</span>
+                    </div>
+                  </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+             {{/each}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="upcoming-meetings" id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>Meetings Schedule</h2>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="categories">
+            <h4>Meeting Catgories</h4>
+            <ul>
+              <li><a href="#">New Lecturers Meeting</a></li>
+              <li><a href="#">Online Teaching Techniques</a></li>
+              <li><a href="#">Higher Education Conference</a></li>
+              <li><a href="#">Student Training Meetup</a></li>
+            
+            </ul>
+            <div class="main-button-red">
+              <a href="/account/register">Join Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="meeting-item">
+                <div class="thumb">
+                  <div class="price">
+                  
+                  </div>
+                  <a href="meeting-details.html"><img src="assets/images/meeting-01.jpg" alt="New Lecturer Meeting"></a>
+                </div>
+                <div class="down-content">
+                  <div class="date">
+                    <h6>Every<span>Month</span></h6>
+                  </div>
+                  <a href="meeting-details.html"><h4>New Lecturers Meeting</h4></a>
+                  <p>Most New Lecturers were attended <br>online meeting per month.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="meeting-item">
+                <div class="thumb">
+                  <div class="price">
+                    
+                  </div>
+                  <a href="meeting-details.html"><img src="assets/images/meeting-02.jpg" alt="Online Teaching"></a>
+                </div>
+                <div class="down-content">
+                  <div class="date">
+                    <h6>Every<span>Week</span></h6>
+                  </div>
+                  <a href="meeting-details.html"><h4>Online Teaching Techniques</h4></a>
+                  <p>Our instructors were gotten<br>online Training.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="meeting-item">
+                <div class="thumb">
+                  <div class="price">
+                 
+                  </div>
+                  <a href="meeting-details.html"><img src="assets/images/meeting-03.jpg" alt="Higher Education"></a>
+                </div>
+                <div class="down-content">
+                  <div class="date">
+                    <h6>Every<span>Month</span></h6>
+                  </div>
+                  <a href="meeting-details.html"><h4>Higher Study Conference</h4></a>
+                  <p>Online Conference was held<br>for students higher education.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="meeting-item">
+                <div class="thumb">
+                  <div class="price">
+                  
+                  </div>
+                  <a href="meeting-details.html"><img src="assets/images/meeting-04.jpg" alt="Student Training"></a>
+                </div>
+                <div class="down-content">
+                  <div class="date">
+                    <h6>Every<span>Month</span></h6>
+                  </div>
+                  <a href="meeting-details.html"><h4>Student Training Meetup</h4></a>
+                  <p>Students were trianed up<br>for better virtual study.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="our-facts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>A Few Facts About Our E-Learning System</h2>
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-12">
+                  <div class="count-area-content percentage">
+                    <div class="count-digit">94</div>
+                    <div class="count-title">Succesed Students</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="count-area-content">
+                    <div class="count-digit">50</div>
+                    <div class="count-title">Current Teachers</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-12">
+                  <div class="count-area-content new-students">
+                    <div class="count-digit">1030</div>
+                    <div class="count-title">New Students</div>
+                  </div>
+                </div> 
+               
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div class="col-lg-6 align-self-center">
+          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xFOG_9Y883c?controls=0&playlist=xFOG_9Y883c&loop=1&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&showsearch=0" title="E-Learning Video" frameborder="0" id="Ifram" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact-us" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 align-self-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="contact" action="" method="post">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Let's get in touch</h2>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                      <input name="name" type="text" id="name" placeholder="YOURNAME...*" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL..." required="">
+                  </fieldset>
+                  </div>
+                  <div class="col-lg-4">
+                    <fieldset>
+                      <input name="subject" type="text" id="subject" placeholder="SUBJECT...*" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea name="message" type="text" class="form-control" id="message" placeholder="YOUR MESSAGE..." required=""></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="right-info">
+            <ul>
+              <li>
+                <h6>Phone Number</h6>
+                <span>+88(0721)xxxxxx</span>
+              </li>
+              <li>
+                <h6>Email Address</h6>
+                <span>elearninginfo@gmail.com</span>
+              </li>
+              <li>
+                <h6>Street Address</h6>
+                <span>Kazla, Rajshahi-6204, Bangladesh.</span>
+              </li>
+              <li>
+                <h6>Website URL</h6>
+                <span>www.elearning.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2022 E-learning System.<br>
+        All Rights Reserved. 
+          <br>
+          Design: <a href="#" target="_parent" >E-Learning</a>
+          <br>
+          Distibuted By: <a href="#" target="_parent">E-Learning System</a>
+        </p>
+    </div>
+  </section>

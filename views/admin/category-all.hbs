@@ -1,0 +1,59 @@
+<script>
+  function sendCategoryDeleteRequest(Id) {
+    {{!-- console.log(Id); --}}
+    $.ajax({
+        url: `/admin/category/`+Id,
+        type: "DELETE",
+        data: JSON.stringify(
+          {
+            Id: Id,
+          }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        complete: function (xmlHttp) {
+          // xmlHttp is a XMLHttpRquest object
+          if (xmlHttp.status != 404) {
+            {{!-- alert("A category has been deleted"); --}}
+            window.location.href = "/admin/category/all";
+          } else {
+            alert("Some thing went wrong");
+            window.location.href = "/error";
+          }
+        }
+      });
+
+  }
+  
+</script>
+   <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="align-items-center text-center justify-content-between mb-3">
+                        <h3 class="mb-0">Category</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-hover mb-0">
+                            <thead>
+                                <tr >
+                                   
+                                    <th scope="col">Category Name</th>
+                                      <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                             {{#each listOfCategories}}
+                                <tr class="text-white">
+                                    <td>{{this.NameCategory}}</td>
+
+                                    <td><a type="button" href="/admin/category/edit/{{./this.Id}}"   class="btn btn-sm btn-success">Edit</a></td>
+
+                                    <td><button type="button" onclick="confirm('Are you sure you want to delete this item?')&&sendCategoryDeleteRequest({{./this.Id}})" class="btn btn-sm btn-primary">Delete</button></td>
+                                </tr>   
+                                  {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
