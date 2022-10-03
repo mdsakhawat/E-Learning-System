@@ -38,6 +38,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
+          {{#if listOfHighlightCourses}}
           <div class="owl-service-item owl-carousel" >
           
           {{#each listOfHighlightCourses}}
@@ -55,6 +56,7 @@
             </div>
                {{/each}}         
           </div>
+          {{/if}}
         </div>
       </div>
     </div>

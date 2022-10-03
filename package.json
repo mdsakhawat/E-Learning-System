@@ -4,8 +4,7 @@
   "description": "E-Learning-System for my University Project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "startt":"node app.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
