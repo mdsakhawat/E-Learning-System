@@ -125,7 +125,8 @@ module.exports = {
         console.log("code from db ",isAvailableCode," code from web ",code);
 
         if ( isAvailableCode == null) {
-            res.status(400).send();}
+            res.status(400).send();
+        }
             else{
             if(isAvailableCode.otp==code){
             //console.log("Run here");

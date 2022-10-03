@@ -14,10 +14,12 @@ module.exports = {
         return rows[0];
     },
     async singleByUserName(username) {
-        const rows = await db.load(
+        let rows =[];
+        rows= await db.load(
             `select * from ${TBL_USERS} where UserName = '${username}'`
         );
         if (rows.length === 0) return null;
+        else
         return rows[0];
     },
     async singleByEmail(email) {
