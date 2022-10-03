@@ -5,7 +5,8 @@ module.exports = {
     let page = +req.query.page || 1;
     if (page == 0) page = 1;
     let offset = (page - 1) * config.pagination.limit;
-    let listOfCourses = await courseModel.pageBycat(
+    let listOfCourses =[]
+    listOfCourses=await courseModel.pageBycat(
       req.params.categoryId,
       offset
     );

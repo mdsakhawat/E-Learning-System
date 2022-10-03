@@ -25,7 +25,7 @@ require("./middlewares/locals-mid")(app);
 require("./middlewares/routes-mid")(app);
 require("./middlewares/error-mid")(app);
 
-const PORT = 4000 ;
+const PORT = process.env.PORT;
 
 app.listen(PORT, function () {
   console.log(`Server running on url : http://localhost:4000`);

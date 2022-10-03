@@ -160,7 +160,8 @@ module.exports = {
     let page = +req.query.page || 1;
     if (page == 0) page = 1;
     let offset = (page - 1) * config.pagination.limit;
-    let listOfCourses = await courseModel.pageByAll(offset);
+    let listOfCourses = []
+    listOfCourses=await courseModel.pageByAll(offset);
     const total = await courseModel.countAllCourse();
     let nPages = Math.ceil(total / config.pagination.limit);
     let page_items = [];
