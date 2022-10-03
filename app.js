@@ -28,5 +28,5 @@ require("./middlewares/error-mid")(app);
 const PORTT = process.env.PORT  || 5000;
 
 app.listen(PORTT, function () {
-  console.log(`Server running on url : http://localhost:5000`);
+  console.log(`Server running on url : http://localhost:${PORTT}`);
 });
