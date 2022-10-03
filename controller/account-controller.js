@@ -44,7 +44,10 @@ module.exports = {
             email: req.body.email,
             otp: otp,
         };
-        await userModel.createVerifyCode(verificationObject);
+        let nmb= await userModel.delVerifyCode(verificationObject);
+        let xncb = await userModel.createVerifyCode(verificationObject);
+    
+        console.log("verify obj ",verificationObject);
         var mailOptions = {
             from: "E-Learning",
             to: req.body.email,
@@ -107,6 +110,9 @@ module.exports = {
             UserName: req.body.username,
             password: hash,
         };
+        
+        console.log("User",user);
+
         if (Permission == "teacher") {
             user.Permission = "teacher";
             if (!biography) {
@@ -115,6 +121,8 @@ module.exports = {
             }
         }
         let isAvailableCode = await userModel.isAvailableCode(email);
+
+        console.log("code from db ",isAvailableCode," code from web ",code);
 
         if ( isAvailableCode == null) {
             res.status(400).send();}

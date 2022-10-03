@@ -46,13 +46,21 @@ module.exports = {
         const entity = { password: NewPassword };
         return db.patch(entity, condition, TBL_USERS);
     },
+    
     async createVerifyCode(entity) {
-      const  condition={
+      let  condition={
         email: entity.email,
         }
-        db.del(condition,TBL_VERIFICATION);
+        //db.del(condition,TBL_VERIFICATION);
         return db.add(entity, TBL_VERIFICATION);
     },
+    delVerifyCode(entity) {
+        let  condition={
+          email: entity.email,
+          }
+          return db.del(condition,TBL_VERIFICATION);
+         
+      },
     async isAvailableCode(email) {
         let rows = await db.load(`select * from verification where email = '${email}'`);
       
