@@ -2,7 +2,7 @@ const db = require("../utils/db");
 const config = require('../config/default.json');
 const TBL_USERS = "user_profile";
 const TBL_VERIFICATION = "verification";
-const TBL_Teach_profile = "Instructor_profile";
+const TBL_Teach_profile = "instructor_profile";
 const TBL_ENROLLED_COURSE = "enrolledcourse";
 module.exports = {
     all() {
@@ -71,7 +71,7 @@ module.exports = {
     async getAllTeacher() {
         return await db.load(`select * from ${TBL_USERS} where isTeacher = 1`);
     },
-    changeTeacherAvailability(UserId,Isteacher,Isblocked)
+           changeTeacherAvailability(UserId,Isteacher,Isblocked)
     {
         const condition = { IdUser : UserId };
         const entity = {  isInstructor : Isteacher,
@@ -126,7 +126,7 @@ module.exports = {
         const condition = { IdUser: id };
         await db.del(condition, TBL_Teach_profile);
     },
-     addTeachProfile(entity) {
+           addTeachProfile(entity) {
         return db.add(entity, TBL_Teach_profile);
     },
     async getTeachProfileById(id) {
