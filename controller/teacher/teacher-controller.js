@@ -59,7 +59,7 @@ module.exports = {
             res.redirect("/")
         } else {
             const teachProfile = await userModel.getTeachProfileById(req.session.authUser.IdUser);
-            res.render("Teacher/profile", {
+            res.render("teacher/profile", {
                 layout: 'teacher',
                 user: req.session.authUser,
                 Biography: teachProfile[0].Biography
@@ -68,7 +68,7 @@ module.exports = {
 
     },
     getEditPassword: async(req, res) => {
-        res.render("Teacher/edit-password", {
+        res.render("teacher/edit-password", {
             layout: 'teacher',
             user: req.session.authUser
         });
@@ -79,7 +79,7 @@ module.exports = {
             req.body.NewPassword === "" ||
             req.body.RetypeNewPassword === ""
         ) {
-            return res.render("Teacher/edit-password", {
+            return res.render("teacher/edit-password", {
                 layout: 'teacher',
                 user: req.session.authUser,
                 err_message: "Password can not be empty !",
@@ -91,7 +91,7 @@ module.exports = {
             req.session.authUser.password
         );
         if (compare === false) {
-            return res.render("Teacher/edit-password", {
+            return res.render("teacher/edit-password", {
                 layout: 'teacher',
                 user: req.session.authUser,
                 err_message: "Your current password is incorrect.",
@@ -99,7 +99,7 @@ module.exports = {
         }
         if (req.body.NewPassword != req.body.RetypeNewPassword) {
 
-            return res.render("Teacher/edit-password", {
+            return res.render("teacher/edit-password", {
                 layout: 'teacher',
                 user: req.session.authUser,
                 err_message: "Your new password does not match with confirmation.",
@@ -107,7 +107,7 @@ module.exports = {
         }
         if (req.body.NewPassword.length <6) {
 
-            return res.render("Teacher/edit-password", {
+            return res.render("teacher/edit-password", {
                 layout: 'teacher',
                 user: req.session.authUser,
                 err_message: "Password length must be minimum 6 !.",
