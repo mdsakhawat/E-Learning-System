@@ -1,4 +1,24 @@
 {{#section 'css'}}
+<style>
+  img {
+    border-radius: 50%;
+    align-self: center;
+  }
+  p {
+    align-self: center;
+    font-size: larger;
+  }
+  .col-8{
+    display: :flex;
+  }
+  button{
+    align-items: center;
+    align-self: center;
+  }
+</style>
+{{/section}}
+
+{{#section 'css'}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/css/fileinput.min.css">
 
 
@@ -64,34 +84,20 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/js/fileinput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.tiny.cloud/1/wafynfll6yk0et81pwlvcwdx6r76d4pl4gy3397p9126dmzm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-      tinymce.init({
-        selector: '#Biography',
-        height: 300,
-        plugins:'paste image link autolink lists table media',
-        menubar: false,
-        toolbar: [
-        'undo redo | fontselect fontsizeselect | bold italic underline strikethrough | numlist bullist alignleft aligncenter alignright | forecolor  backcolor | table link image media'
-        ],
-        fontsize_formats: '10pt 12pt 14pt 16pt 18pt 24pt 36pt',
-        elementpath: false,
-        icons: 'material',
-        placeholder: 'writing description here...',
-      });
-</script>
+
 {{/section}}
 
 <div class="container rounded bg-white mt-3 mb-4  col-xl-11">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5 text-dark"><img class="rounded-circle mt-5" width="150px"  <img src="../../public/avatar/avatar2.jpg" alt="Avatar" style="width:200px"><span class="font-weight-bold">{{user.FullName}}</span><span class="text-dark">{{user.Email}}</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5 text-dark"><img class="rounded-circle mt-5" width="150px"  <img src="../../public/avatar/admin.jpg" alt="Avatar" style="width:200px"><span class="font-weight-bold">{{user.FullName}}</span><span class="text-dark">{{user.Email}}</span><span> </span></div>
         </div>
         <div class="col-md-9 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right text-dark">Profile</h4>
                 </div>
-                <form id="usrform" method="POST" action="">
+                <form  method="POST" action="">
                    {{#if err_message}}
                     <div id="error-message" class="alert alert-warning alert-dismissible fade show" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -119,16 +125,12 @@ body {
                       <label class="labels text-dark text-bold ">Permission</label>
                     <input type="text" class="form-control" id="floatingInput" placeholder="Permission" value="{{user.Permission}}" readonly>
                     </div>
-                    <div class="col-md-12">
-                      <label for="Biography" class="labels text-dark text-bold">Biography</label>
-                       <textarea id="Biography" class="form-control" name="Biography" form="usrform">{{Biography}}</textarea>
-                      <input type="hidden" name="IdUser" value="{{user.IdUser}}">
-                      </div>                     
+                                   
                 </div>
                 <div class="row mt-3">
                 </div>
                 <div class="mt-4 text-center">
-                  <button class="btn btn-primary profile-button" type="submit" formaction="/teacher/profile/edit"> Save
+                  <button class="btn btn-primary profile-button" type="submit" formaction="/admin/profile/edit"> Save
                   </button>
                   </div>
                 </form>
