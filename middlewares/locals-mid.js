@@ -1,6 +1,9 @@
 const categoryModel = require("../models/category-model");
 const headercategoryModel = require("../models/headercategory-model");
 const cartModel = require("../models/cart-model");
+const config = require("../config/default.json");
+const courseModel = require("../models/course-model");
+
 module.exports = (app) => {
 
   app.use(async (req, res, next) => {
@@ -28,6 +31,21 @@ module.exports = (app) => {
       header.details = list;
     }
     res.locals.lcCategories = headerCategory;
+    next();
+  });
+
+  app.use(async function (req, res, next) {
+     
+    let listOfMessage = [];
+    try {
+      listOfMessage = await courseModel.getMessagelist();
+      
+    } catch (e) {
+      console.log(e);
+    }
+    let listOfMessage2 = listOfMessage.slice(0, 3);
+
+    res.locals.listOfMessage1 = listOfMessage2;
     next();
   });
 };

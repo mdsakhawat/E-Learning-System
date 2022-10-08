@@ -213,6 +213,7 @@ module.exports = {
             res.redirect(url);
         }
     },
+
     postLogout: async(req, res) => {
         let url = "/";
         // if (req.session.authUser.Permission != "student") {

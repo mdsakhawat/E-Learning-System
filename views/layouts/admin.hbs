@@ -117,17 +117,19 @@
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Message</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
+
+                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            {{#each listOfMessage1}}
+                            <a href="/admin/allmessage/detail/{{./this.id}}" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    
                                     <div class="ms-2">
-                                       
-                                        <small class=" text-white">No Message Now !!!</small>
+                                        <h6 class="fw-normal mb-0">{{this.Name}} send you a message</h6>      
                                     </div>
                                 </div>
                             </a>
-                           
+                            <hr class="dropdown-divider">
+                              {{/each}}
+                            <a href="/admin/allmessage" class="dropdown-item text-center">See all message</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

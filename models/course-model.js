@@ -2,6 +2,7 @@ const db = require("../utils/db");
 const config = require("../config/default.json");
 
 const TBL_COURSE = "course";
+const TBL_MessageList = "message_list";
 const TBL_ENROLLEDCOURSE = "enrolledcourse";
 const TBL_CHAPTER = "chapter";
 const TBL_LESSON = "lesson"
@@ -33,6 +34,11 @@ module.exports = {
                         course.IdCourse desc limit 10`);
     },
 
+    async getMessagelist() {
+  
+        return await db.load(`select * 
+                        from ${TBL_MessageList}`);
+    },
     async getMostViewed() {
         // return await db.load(`select course.IdCourse, FullName, nameCourse, course.Description,
         //                         course.nameCourse, category.NameCategory, course.Price, course.SaleCost,course.title,

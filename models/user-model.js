@@ -2,6 +2,7 @@ const db = require("../utils/db");
 const config = require('../config/default.json');
 const TBL_USERS = "user_profile";
 const TBL_VERIFICATION = "verification";
+const TBL_Message = "message_list";
 const TBL_Teach_profile = "instructor_profile";
 const TBL_ENROLLED_COURSE = "enrolledcourse";
 module.exports = {
@@ -56,13 +57,26 @@ module.exports = {
         //db.del(condition,TBL_VERIFICATION);
         return db.add(entity, TBL_VERIFICATION);
     },
-    delVerifyCode(entity) {
+       delVerifyCode(entity) {
         let  condition={
           email: entity.email,
           }
           return db.del(condition,TBL_VERIFICATION);
          
       },
+      async createMessage(entity) {
+        let  condition={
+          email: entity.email,
+          }
+          return db.add(entity, TBL_Message);
+      },
+     delMessage(entity) {
+          let  condition={
+            email: entity.email,
+            }
+            return db.del(condition,TBL_Message);
+           
+        },
     async isAvailableCode(email) {
         let rows = await db.load(`select * from verification where email = '${email}'`);
       

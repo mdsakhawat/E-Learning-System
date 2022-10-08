@@ -35,6 +35,7 @@ router.get('/student/all', controller.getAllUserPage);
 router.get('/student/:id', controller.getUserById);
 router.put('/student/:id', controller.blockStudent);
 router.put('/student/unblock/:id', controller.unblockStudent);
-
-
+router.get('/allmessage', controller.getAllMessage);
+router.delete("/allmessage/delete/:id", controller.deleteMessage);
+router.get('/allmessage/detail/:id', controller.getDetailmessage);
 module.exports = router;

@@ -6,13 +6,18 @@ const userModel = require("../../models/user-model");
 const wishlistModel = require("../../models/wishlist-model");
 
 module.exports = {
+
+  
   getadminHome: async (req, res) => {
-    console.log('Dhukse');
+    
+    
+    console.log('run in admin-controller');
     res.render("admin/adminhomepage", {
       layout: "admin",
     });
   },
   getAdminProfilePage: async (req, res) => {
+   
     let user = await userModel.getAdminProfile();
     res.render("admin/admin-profile", {
       layout: "admin",
@@ -20,6 +25,9 @@ module.exports = {
     });
   },
   editAdminProfile: async (req, res) => {
+  
+   
+
     console.log("Data:", req.body);
     let user = await userModel.getAdminProfile();
     if (req.body.FullName === "") {
@@ -27,6 +35,7 @@ module.exports = {
           layout: 'admin',
           err_message: "Full name can't be empty !",
           user: user,
+
       });
   }
     console.log(req.body.Username," ",req.body.FullName)
@@ -40,13 +49,16 @@ module.exports = {
     });
   },
   getCategoryPage: async (req, res) => {
+    
+
     let listOfCategories = await categoryModel.all();
     res.render("admin/category-all", {
       layout: "admin",
-      listOfCategories: listOfCategories,
     });
   },
   getEditCategoryPage: async (req, res) => {
+   
+
     const categoryId = req.params.id;
     let headerCategories = await headercategoryModel.all();
     let category = await categoryModel.getCategoryById(categoryId);
@@ -59,9 +71,12 @@ module.exports = {
       headerCategoryName: headerCategoryName.HeaderNameCategory,
       category: category,
       headerCategories: headerCategories,
+
     });
   },
   editCategoryById: async (req, res) => {
+   
+
     const categoryId = req.params.id;
     const { NameCategory, HeaderCategoryId } = req.body;
     console.log(req.body);
@@ -75,26 +90,35 @@ module.exports = {
       category.HeaderCategoryID
     );
     res.render("admin/category-edit", {
+      
       layout: "admin",
       headerCategoryName: headerCategoryName.HeaderNameCategory,
       err_message: "Category updated successfully",
       category: category,
       headerCategories: headerCategories,
+
     });
   },
   deleteCategory: async (req, res) => {
+  
+
     const Id = req.body.Id;
     await categoryModel.deleteCategory(Id);
     res.redirect("/admin/category/all");
   },
   getAddCategoryPage: async (req, res) => {
+    
+
     let headerCategories = await headercategoryModel.all();
     res.render("admin/category-add", {
       layout: "admin",
       headerCategories: headerCategories,
+
     });
   },
   addNewCategory: async (req, res) => {
+    
+
     console.log(req.body);
     const { NameCategory, HeaderCategoryId } = req.body;
     let headerCategories = await headercategoryModel.all();
@@ -103,45 +127,64 @@ module.exports = {
       layout: "admin",
       err_message: "New category is added successfully",
       headerCategories: headerCategories,
+
     });
   },
  
 
   getHeaderCategoryPage: async (req, res) => {
+    
+
     let listOfCategories = await headercategoryModel.all();
     res.render("admin/headercategory-all", {
       layout: "admin",
       listOfCategories: listOfCategories,
+
     });
   },
   
   deleteHeaderCategory: async (req, res) => {
+   
+
     const Id = req.body.Id;
    
     await headercategoryModel.deleteHeaderCategory(Id);
     res.redirect("/admin/headercategory/all");
   },
   getAddHeaderCategoryPage: async (req, res) => {
-    res.render("admin/headercategory-add", { layout: "admin" });
+    
+    res.render("admin/headercategory-add", { 
+      layout: "admin" ,
+
+  });
   },
   addNewHeaderCategory: async (req, res) => {
+    
+    
+
     const { HeaderNameCategory } = req.body;
     await headercategoryModel.addNewHeaderCategory({ HeaderNameCategory });
     res.render("admin/headercategory-add", {
       layout: "admin",
       err_message: "New Header category is added successfully",
+
     });
   },
   getEditHeaderCategoryPage: async (req, res) => {
+   
+
     const categoryId = req.params.id;
     let category = await headercategoryModel.getById(categoryId);
     res.render("admin/headercategory-edit", {
       layout: "admin",
       category: category,
+
     });
   },
   
   editHeaderCategoryById: async (req, res) => {
+    
+
     const categoryId = req.params.id;
     const { HeaderNameCategory } = req.body;
     //console.log(req.body);
@@ -153,14 +196,18 @@ module.exports = {
       layout: "admin",
       err_message: "Header category is updated successfully",
       category: category,
+
     });
   },
    
   getAllCourse: async (req, res) => {
+    
+
     let page = +req.query.page || 1;
     if (page == 0) page = 1;
     let offset = (page - 1) * config.pagination.limit;
     let listOfCourses = []
+    console.log("offsettt",offset);
     listOfCourses=await courseModel.pageByAll(offset);
     const total = await courseModel.countAllCourse();
     let nPages = Math.ceil(total / config.pagination.limit);
@@ -172,6 +219,7 @@ module.exports = {
       page_items.push(item);
     }
 
+    console.log(listOfCourses)
     res.render("admin/course-all", {
       layout: "admin",
       listOfCourses: listOfCourses,
@@ -181,9 +229,11 @@ module.exports = {
       prev_value: page - 1,
       next_value: page + 1,
       title: listOfCourses[0].NameCategory,
+
     });
   },
   getEditCoursePage: async (req, res) => {
+   
     const IdCourse = req.params.id;
     let listOfCategories = await categoryModel.all();
     let courseDetail = await courseModel.single(IdCourse);
@@ -191,11 +241,12 @@ module.exports = {
       layout: "admin",
       course: courseDetail,
       listOfCategories: listOfCategories,
+
     });
   },
 
   editCourse: async (req, res) => {
-
+    
     var date = new Date();
     date = date.getUTCFullYear() + '-' +
         ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
@@ -237,9 +288,11 @@ module.exports = {
       course: courseDetail,
       listOfCategories: listOfCategories,
       err_message: "Course updated successfully",
+
     });
   },
   getCourseDetail: async (req, res) => {
+    
     const IdCourse = req.params.id;
     const course = await courseModel.single(IdCourse);
     if (course === null) {
@@ -280,9 +333,11 @@ module.exports = {
       listRating: listRating,
       isAvailableAddCart: isAvailableAddCart,
       isWishList: isWishList,
+
     });
   },
   deleteCourse: async (req, res) => {
+   
     const IdCourse = req.body.IdCourse;
     console.log(IdCourse);
     await courseModel.deleteCourse(IdCourse);
@@ -290,12 +345,14 @@ module.exports = {
   },
 
   enableCourse: async (req, res) => {
+   
     const IdCourse = req.body.IdCourse;
     await courseModel.enableCourse(IdCourse);
     res.redirect("/course/all");
   },
 
   getAllTeacher: async (req, res) => {
+    
     let page = +req.query.page || 1;
     if (page == 0) page = 1;
     let offset = (page - 1) * config.pagination.limit;
@@ -324,26 +381,34 @@ module.exports = {
       can_go_prev: page > 1,
       prev_value: page - 1,
       next_value: page + 1,
+
     });
   },
   getTeacherById: async (req, res) => {
+    
     const userId = req.params.id;
     let user = await userModel.singleTeacher(userId);
-    res.render("admin/teacher-detail", { user: user, layout: "admin" });
+    res.render("admin/teacher-detail", {
+       user: user, 
+       layout: "admin",
+  });
   },
   blockTeacher: async (req, res) => {
+   
     const Id = req.body.teacherId;
     await userModel.blockTeacher(Id);
        userModel.changeTeacherAvailability(Id,0,1);
     res.redirect("/teacher/all");
   },
   unblockTeacher: async (req, res) => {
+   
     const Id = req.body.teacherId;
     await userModel.unblockTeacher(Id);
     userModel.changeTeacherAvailability(Id,1,0);
     res.redirect("/teacher/all");
   },
   getPendingTeacherPage: async (req, res) => {
+    
     let listPendingTeachers = await userModel.getPendingTeacher();
    // console.log("pending : ",listPendingTeachers)
     listPendingTeachers.forEach((item) => {
@@ -356,20 +421,24 @@ module.exports = {
     res.render("admin/teacher-pending", {
       layout: "admin",
       listPendingTeachers: listPendingTeachers,
+
     });
   },
   approvePendingTeacher: async (req, res) => {
+    
     const id = req.body.teacherId;
     await userModel.approvePendingTeacher(id);
     res.redirect("/teacher/all/pending");
   },
   declineTeacher: async (req, res) => {
+
     const id = req.body.teacherId;
     await userModel.declinePendingTeacher(id);
     res.redirect("/teacher/all/pending");
   },
 
   getAllUserPage: async (req, res) => {
+    
     let page = +req.query.page || 1;
     if (page == 0) page = 1;
     let offset = (page - 1) * config.pagination.limit;
@@ -391,9 +460,11 @@ module.exports = {
       can_go_prev: page > 1,
       prev_value: page - 1,
       next_value: page + 1,
+
     });
   },
   getUserById: async (req, res) => {
+    
     const userId = req.params.id;
     let user = await userModel.single(userId);
     let numberOfCourses = await userModel.countCoursesOfUser(userId);
@@ -402,17 +473,51 @@ module.exports = {
       user: user,
       numberOfCourses: numberOfCourses,
       layout: "admin",
+
     });
   },
   blockStudent: async (req, res) => {
+    
     const Id = req.body.teacherId;
     await userModel.blockStudent(Id);
     res.redirect("admin/user-all");
   },
   unblockStudent: async (req, res) => {
+  
     const Id = req.body.teacherId;
     await userModel.unblockStudent(Id);
     res.redirect("admin/user-all");
-  }
+  },
+   
+  getAllMessage: async (req, res) => {
+    
+  
+    let listOfCategories = await headercategoryModel.all2();
+    res.render("admin/message-all", {
+      layout: "admin",
+      listOfCategories: listOfCategories,
+    });
+  },
+  deleteMessage: async (req, res) => {
+   
+
+    const id = req.body.id;
+    console.log("IDDDDDDDDDDDDDD",id);
+   
+    headercategoryModel.deleteMessage(id);
+    res.redirect("/admin/allmessage");
+    
+  },
+  getDetailmessage: async (req, res) => {
+   
+
+    const id = req.params.id;
+    let detailmessage = await headercategoryModel.getmessageByEmail(id);
+    console.log(detailmessage);
+    res.render("admin/detail-message", {
+      layout: "admin",
+      detailmessage: detailmessage,
+    });
+  },
 
 };
