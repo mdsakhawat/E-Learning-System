@@ -19,13 +19,13 @@
         {{#if hDisplay}}
           Students also learn:
           {{#each this.listOfCategories}}
-            <a href="/course/domain/{{HeaderCategoryID}}/category/{{Id}}">{{NameCategory}}</a>
+            <a href="/course/domain/{{HeaderCategoryID}}">{{NameCategory}}</a>
           {{/each}}
         {{/if}}     
         {{#if this.cateDisplay}}
           Students also learn:
           {{#each listOfCategories}}
-            <a href="/course/domain/{{HeaderCategoryID}}/category/{{Id}}">{{NameCategory}} </a>
+            <a href="/course/domain/{{HeaderCategoryID}}">{{NameCategory}} </a>
           {{/each}}
         {{/if}}       
       </strong>
@@ -40,7 +40,7 @@
     </div>
     {{else}}
     
-        <h2>
+        <h2 >
         Sorry, we couldn't find any results for "{{searchValue}}"
       </h2>
 
