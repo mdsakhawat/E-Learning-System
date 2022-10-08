@@ -292,7 +292,7 @@ module.exports = {
         on course.IdInstructor = user_profile.IdUser
         inner join category
         on course.IdCategory = category.Id
-        inner join chapter
+        left join chapter
         on course.IdCourse = chapter.idCourse
         where category.Id in (select category.Id
             from headercategory
@@ -376,7 +376,7 @@ module.exports = {
           addCourse(entity) {
         return db.add(entity, TBL_COURSE);
     },
-    addEnrolledCourse(entity) {
+          addEnrolledCourse(entity) {
         return db.add(entity, TBL_ENROLLEDCOURSE);
     },
     async getListChapterByCourseId(IdCourse) {

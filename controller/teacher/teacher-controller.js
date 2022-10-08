@@ -9,12 +9,10 @@ const headercategoryModel = require("../../models/headercategory-model");
 const categoryModel = require("../../models/category-model");
 const config = require("../../config/default.json");
 const { countByDomain, countAllCourse } = require('../../models/course-model');
-const setTZ = require('set-tz')
+
 
 
 var path = require('path');
-let date_ob = new Date();
-moment = require('moment')
 
 
 module.exports = {
@@ -182,7 +180,7 @@ module.exports = {
             IdInstructor: req.session.authUser.IdUser,
             createdTime: dateTime
         }
-        //console.log(newcourse);
+        console.log("new course",newcourse);
         const ret = await courseModel.addCourse(newcourse);
         const idNewCourse = await courseModel.getNewCourseByIDTeacher(newcourse.IdInstructor);
         res.redirect('/teacher/course/' + idNewCourse[0].IdCourse);
@@ -190,13 +188,14 @@ module.exports = {
     getDetailCourse: async(req, res) => {
         const IdCourse = req.params.id;
         const course = await courseModel.single(IdCourse);
-        //console.log("get courseUpdated Time :  ",course.UpdatedTime);
+        console.log("details of course ",course);
         const teacher = await userModel.singleTeacher(course.IdInstructor);
         if (course === null) {
             return res.redirect("/");
         }
         const isFinish = course.status == "finished" ? true : false;
-        var date = new Date(course.UpdatedTime);
+        var date = new Date(course.updatedTime);
+        //console.log("date ",date)
         var year = date.getFullYear();
         var month = date.getMonth() + 1;
         var day = date.getDate();
@@ -232,6 +231,7 @@ module.exports = {
         }
 
         console.log(teacher.Biography);
+        
         res.render("teacher/course-Detail", {
             layout: 'teacher',
             course: course,

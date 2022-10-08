@@ -10,19 +10,25 @@
 .user-ac-section {
     padding-top: 110px;
     padding-bottom: 400px;
+
 }
 .user-prof-section {
     padding-top: 110px;
     padding-bottom: 400px;
+    background-color: rgb(162, 204, 175);
+
 }
 .user-wishlist-section {
     padding-top: 110px;
     padding-bottom: 400px;
+  
+
 }
 
 .user-ac-pass-section {
     padding-top: 110px;
     padding-bottom: 400px;
+    background-color: rgb(162, 204, 175);
 }
 .cart-section {
     padding-top: 110px;

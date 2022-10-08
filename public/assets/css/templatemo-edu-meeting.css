@@ -413,6 +413,7 @@ header
   padding-right: 0px;
 }
 
+
 .header-area .main-nav .nav li.has-sub ul.sub-menu li a {
   opacity: 1;
   display: block;
@@ -430,6 +431,7 @@ header
   font-weight: 400;
   border-bottom: 1px solid #eee;
 }
+
 
 .header-area .main-nav .nav li.has-sub ul li a:hover {
   background: #fff;
