@@ -54,6 +54,7 @@ module.exports = {
     let listOfCategories = await categoryModel.all();
     res.render("admin/category-all", {
       layout: "admin",
+      listOfCategories:listOfCategories,
     });
   },
   getEditCategoryPage: async (req, res) => {
