@@ -148,6 +148,7 @@ onMouseleave(score){
         <div class="col-12 mb-4">
           <h3>Course Content</h3>
           {{#if isAuth}}
+             {{#if  list_enrolled}}
           <div class="accordion" id="accordionExample1">
             {{#each listChapter}}
             <div class="accordion-item">
@@ -173,6 +174,32 @@ onMouseleave(score){
             </div>
             {{/each}}
           </div>
+          {{else}}
+                <div class="accordion" id="accordionExample1">
+            {{#each listChapter}}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target={{this.dataBsTarget}} aria-expanded="true"
+                  aria-controls={{this.IdDiv}}>
+                  {{this.NameChapter}}
+                </button>
+              </h2>
+              <div id={{this.IdDiv}} class="accordion-collapse collapse show row"
+                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                {{#each ListLesson}}
+                <div>
+                   <a class="accordion-body isDisabled-link-a" onclick="return false" href="">
+                  {{this.NameLesson}}
+                </a>   
+                </div>
+                           
+                {{/each}}
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          {{/if}}
           {{else}}
           <div class="accordion" id="accordionExample1">
             {{#each listChapter}}

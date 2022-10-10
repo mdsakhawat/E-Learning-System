@@ -10,6 +10,10 @@ module.exports = {
     async all() {
         return await db.load(`select * from ${TBL_COURSE}`);
     },
+    async all_enrolled(id,c_id) {
+        return await db.load(`select * from ${TBL_ENROLLEDCOURSE} where IdUser=${id} AND IdCourse=${c_id}`);
+    },
+
 
     async getLatest() {
         // return await db.load(`select course.IdCourse, FullName, nameCourse, course.Description,

@@ -1,8 +1,20 @@
 const courseModel = require("../models/course-model");
 const wishlistModel = require("../models/wishlist-model");
+const fs = require('fs');
+
+var path = require('path');
 module.exports = {
   getDetail: async function (req, res) {
+
+   console.log(req.session.authUser);
     const IdCourse = req.params.id;
+    let userid=-1;
+    if(req.session.authUser){
+     userid=req.session.authUser.IdUser;
+    }
+    let list_enrolled =[];
+    list_enrolled=  await courseModel.all_enrolled(userid,IdCourse);
+    console.log("List enrolled",list_enrolled);
     const course = await courseModel.single(IdCourse);
     if (course === null) {
       return res.redirect("/");
@@ -69,16 +81,45 @@ module.exports = {
       numberRating: numberRating,
       isJoinCourse: isJoinCourse,
       listChapter: listChapter,
+      list_enrolled:list_enrolled,
     });
   },
   getVideoLesson: async function (req, res) {
+  
+
+
     const IdCourse = req.params.idCourse;
     const IdChapter = req.params.idChapter;
     const IdLesson = req.params.idLesson;
-    res.render("viewLesson/lesson",{
-      layout: false,
-      IdChapter: IdChapter,
-      IdLesson: IdLesson,
+
+    const testFolder = `./public/video/IdChapter${IdChapter}/IdLesson${IdLesson}`;
+   
+    fs.readdir(testFolder, (err, files) => {
+    
+        const ext =path.extname(`/public/video/IdChapter${IdChapter}/IdLesson${IdLesson}/${files}`);
+
+        console.log(`ext ===== ${ext}`); 
+        if (ext ==`.pdf`) {
+            console.log("pdf")
+            res.render("teacher/pdf", {
+                layout: false,
+                IdChapter: IdChapter,
+                IdLesson: IdLesson,
+            });
+        }
+        else{
+            console.log("video")
+            
+            res.render("teacher/lesson-edit", {
+                layout: false,
+                IdChapter: IdChapter,
+                IdLesson: IdLesson,
+            });
+        }
+    
     });
+
+     
+
   },
 };

@@ -299,12 +299,12 @@ module.exports = {
     if (course === null) {
       return res.redirect("/");
     }
-    var date = new Date(course.UpdatedTime);
+    var date = new Date(course.createdTime);
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
     var str = day + "/" + month + "/" + year;
-    course.updatedTime = str;
+    course.createdTime = str;
     const listCourse = await courseModel.getCourseByIdCategory(
       course.IdCategory,
       IdCourse
@@ -334,6 +334,7 @@ module.exports = {
       listRating: listRating,
       isAvailableAddCart: isAvailableAddCart,
       isWishList: isWishList,
+    
 
     });
   },
