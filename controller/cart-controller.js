@@ -4,7 +4,7 @@ const setTZ = require('set-tz')
 
 
 var path = require('path');
-let date_ob = new Date();
+
 moment = require('moment')
 
 module.exports = {
@@ -35,6 +35,7 @@ module.exports = {
   },
   postCheckout:async function(req,res)
   {
+    let date_ob = new Date();
     const userid=req.session.authUser.IdUser;
     var day = ("0" + date_ob.getDate()).slice(-2);
     var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);

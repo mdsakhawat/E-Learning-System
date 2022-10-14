@@ -3,12 +3,12 @@ const TBL_ENROLLEDCOURSE = "enrolledcourse";
 
 const setTZ = require('set-tz')
 var path = require('path');
-let date_ob = new Date();
+
 moment = require('moment')
 
 module.exports = {
     addRating(IdUser, IdCourse, rateStar, Comments) {
-        
+        let date_ob = new Date();
         var day = ("0" + date_ob.getDate()).slice(-2);
         var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
         var year = date_ob.getFullYear();
