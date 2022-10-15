@@ -285,6 +285,7 @@ module.exports = {
     getEditCourse: async function(req, res) {
         const idCourse = req.params.id;
         const course = await courseModel.single(idCourse);
+        console.log(course);
         const listOfCategory = await categoryModel.all();
         const listOfHeaderCategory = await headercategoryModel.all();
         res.render("teacher/course-edit", {
@@ -331,7 +332,7 @@ module.exports = {
                     status: req.body.status,
                     UpdatedTime: date,
                 };
-                //console.log("edited course : \n",edit)
+                console.log("edited course : \n",edit)
                 const IdCourse = req.body.IdCourse;
                 await courseModel.updateCourse(IdCourse, edit);
                 res.redirect("/teacher/course/" + IdCourse);
