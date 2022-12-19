@@ -1,0 +1,53 @@
+
+{{#section "css"}}
+  <link rel="stylesheet" href="/public/stylesheets/admin-homepage.css" />
+{{/section}}
+<div class="row col-md-12 mt-4">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+    <div>
+      {{#if err_message}}
+        <div
+          id="error-message"
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{err_message}}
+        </div>
+      {{/if}}
+      <h1>Add new header category</h1>
+    </div>
+    <div>
+      <form method="POST">
+        <div>
+          <div class="bg-black text-white">Header category name</div>
+          <input
+            name="HeaderNameCategory"
+            class="form-control bg-white"
+            id="focusedInput"
+            type="text"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-success"
+          style="margin-top: 15px;"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

@@ -1,0 +1,13 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding-top: 70px;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.icon-md {
+    font-size: 36px;
+  }
