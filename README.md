@@ -37,4 +37,4 @@ This platform enables seamless interaction between learners, instructors, and ad
 - NodeJS
 - SQL
 
-  ## [Visit this Site to Preview](https://cse3100.azurewebsites.net/)
+## [Visit this Site to Preview](https://cse3100.azurewebsites.net/)
